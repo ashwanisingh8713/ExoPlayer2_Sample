@@ -1,0 +1,31 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion "$COMPILED_SDK".toInteger()
+    buildToolsVersion "$BUILD_TOOL_VERSION"
+
+
+    defaultConfig {
+        minSdkVersion "$MIN_SDK".toInteger()
+        targetSdkVersion "$TARGET_SDK".toInteger()
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+}
+
+dependencies {
+    api 'com.google.ads.interactivemedia.v3:interactivemedia:3.9.4'
+    implementation project(':core')
+    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+    // These dependencies are necessary to force the supportLibraryVersion of
+    // com.android.support:support-v4 and com.android.support:customtabs to be
+    // used. Else older versions are used, for example via:
+    // com.google.android.gms:play-services-ads:15.0.1
+    // |-- com.android.support:customtabs:26.1.0
+    implementation "com.android.support:support-v4:$SUPPORT_VC"
+    implementation "com.android.support:customtabs:$SUPPORT_VC"
+}
+
+

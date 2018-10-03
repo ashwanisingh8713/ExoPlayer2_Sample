@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion "$COMPILED_SDK".toInteger()
+    buildToolsVersion "$BUILD_TOOL_VERSION"
+
+
+
+    defaultConfig {
+        applicationId "com.google.android.exoplayer2.imademo"
+        minSdkVersion "$MIN_SDK".toInteger()
+        targetSdkVersion "$TARGET_SDK".toInteger()
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation deps.supportAnnotations
+    implementation deps.appcompatv7
+    implementation project(':core')
+    implementation project(':dash')
+    implementation project(':hls')
+    implementation project(':smoothstreaming')
+    implementation project(':ui')
+    implementation project(':ima')
+}
